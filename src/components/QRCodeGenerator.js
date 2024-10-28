@@ -50,7 +50,6 @@ const QRCodeGenerator = () => {
     link.click();
   };
 
- 
   const getQRCodeValue = () => {
     if (inputType === 'WiFi') {
       return `WIFI:S:${ssid};T:${securityType};P:${password};;`;
@@ -60,13 +59,10 @@ const QRCodeGenerator = () => {
     return inputValue;
   };
 
-  
-
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-900 p-6">
       <div className="bg-gray-800 shadow-2xl rounded-lg p-8 max-w-lg w-full border border-gray-700">
         <h2 className="text-4xl font-extrabold text-center text-white mb-6">Krijo QR Code</h2>
-        
         
         <label className="text-white mb-2 block">Zgjidh llojin e përmbajtjes:</label>
         <select
@@ -80,7 +76,6 @@ const QRCodeGenerator = () => {
           <option value="Telefon">Telefon</option>
         </select>
 
-       
         {inputType === 'WiFi' ? (
           <>
             <input
@@ -153,7 +148,6 @@ const QRCodeGenerator = () => {
           </div>
         )}
 
-        
         {error && (
           <div className="bg-red-600 text-white p-3 rounded-lg text-center mb-4">
             {error}
@@ -165,6 +159,13 @@ const QRCodeGenerator = () => {
           className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full mb-4"
         >
           Shkarko QR Code
+        </button>
+
+        <button
+          onClick={() => window.history.back()}
+          className="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+        >
+          Kthehu në faqën kryesore
         </button>
       </div>
     </div>

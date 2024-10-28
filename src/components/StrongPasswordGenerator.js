@@ -2,19 +2,19 @@ import React, { useState } from 'react';
 
 const StrongPasswordGenerator = () => {
   const [password, setPassword] = useState('');
-  const [length, setLength] = useState(12); 
+  const [length, setLength] = useState(12);
   const [includeUppercase, setIncludeUppercase] = useState(true);
   const [includeNumbers, setIncludeNumbers] = useState(true);
   const [includeSymbols, setIncludeSymbols] = useState(true);
   const [error, setError] = useState('');
+  const [copySuccess, setCopySuccess] = useState(false);
 
   const generatePassword = () => {
-
     if (length < 8) {
       setError('Fjalëkalimi duhet të ketë të paktën 8 karaktere!');
       return;
     } else {
-      setError(''); 
+      setError('');
     }
 
     const lowercase = 'abcdefghijklmnopqrstuvwxyz';
@@ -37,6 +37,14 @@ const StrongPasswordGenerator = () => {
     }
     
     setPassword(generatedPassword);
+    setCopySuccess(false);
+  };
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(password);
+    setCopySuccess(true);
+
+    setTimeout(() => setCopySuccess(false), 2000);
   };
 
   return (
@@ -83,8 +91,7 @@ const StrongPasswordGenerator = () => {
             Përfshij simbole
           </label>
         </div>
-        
-   
+
         {error && (
           <div className="bg-red-600 text-white p-3 rounded-lg text-center mb-4">
             {error}
@@ -103,6 +110,24 @@ const StrongPasswordGenerator = () => {
             <strong>Fjalëkalimi i gjeneruar:</strong> {password}
           </div>
         )}
+
+        {password && (
+          <button
+            onClick={copyToClipboard}
+            className={`${
+              copySuccess ? 'bg-green-500' : 'bg-green-600 hover:bg-green-700'
+            } text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full mb-4 transition duration-300 ease-in-out`}
+          >
+            {copySuccess ? 'Kopjuar!' : 'Kopjo Fjalëkalimin'}
+          </button>
+        )}
+
+        <button
+          onClick={() => window.history.back()}
+          className="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+        >
+          Kthehu në faqën kryesore
+        </button>
       </div>
     </div>
   );

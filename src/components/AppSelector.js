@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
-import QRCodeGenerator from './QRCodeGenerator'; // Importoni komponentët e aplikacioneve
-import StrongPasswordGenerator from './StrongPasswordGenerator';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const AppSelector = () => {
-  const [activeApp, setActiveApp] = useState(null);
+  const navigate = useNavigate();
 
   const apps = [
-    { name: 'QRCode Generator', component: <QRCodeGenerator /> },
-    { name: 'Strong Password Generator', component: <StrongPasswordGenerator /> },
+    { name: 'QRCode Generator', url: '/qrcode' },
+    { name: 'Strong Password Generator', url: '/password' },
     // Mund të shtoni aplikacione të tjera këtu
   ];
+
+  const openApp = (url) => {
+    navigate(url); // Përdorimi i navigate për të hapur aplikacionin
+  };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 p-6">
@@ -20,7 +23,7 @@ const AppSelector = () => {
           <div key={index} className="bg-gray-800 shadow-lg rounded-lg p-6 text-center">
             <h2 className="text-2xl font-bold text-white mb-4">{app.name}</h2>
             <button
-              onClick={() => setActiveApp(app.component)}
+              onClick={() => openApp(app.url)} // Përdorimi i `openApp` për të naviguar
               className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             >
               Hap Aplikacionin
@@ -28,12 +31,6 @@ const AppSelector = () => {
           </div>
         ))}
       </div>
-
-      {activeApp && (
-        <div className="mt-8 w-full">
-          {activeApp}
-        </div>
-      )}
     </div>
   );
 };
