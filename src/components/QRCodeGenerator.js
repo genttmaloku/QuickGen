@@ -171,7 +171,10 @@ const QRCodeGenerator = () => {
         >
           Kthehu në faqën kryesore
         </button>
+        
       </div>
+
+
     </div>
   );
 };

@@ -1,12 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FaQrcode, FaLock } from 'react-icons/fa'; // Importimi i ikonave
 
 const AppSelector = () => {
   const navigate = useNavigate();
 
   const apps = [
-    { name: 'QRCode Generator', url: '/qrcode' },
-    { name: 'Strong Password Generator', url: '/password' },
+    { name: 'QRCode Generator', url: '/qrcode', icon: <FaQrcode className="text-4xl" /> },
+    { name: 'Strong Password Generator', url: '/password', icon: <FaLock className="text-4xl" /> },
     // Mund të shtoni aplikacione të tjera këtu
   ];
 
@@ -20,11 +21,17 @@ const AppSelector = () => {
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {apps.map((app, index) => (
-          <div key={index} className="bg-gray-800 shadow-lg rounded-lg p-6 text-center">
+          <div
+            key={index}
+            className="bg-gray-800 shadow-lg rounded-lg p-6 text-center transition-transform transform hover:scale-105 hover:bg-gray-700"
+          >
+            <div className="mb-4 flex justify-center">
+              {app.icon} {/* Ikona vendosur në mes */}
+            </div>
             <h2 className="text-2xl font-bold text-white mb-4">{app.name}</h2>
             <button
               onClick={() => openApp(app.url)} // Përdorimi i `openApp` për të naviguar
-              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-colors duration-300"
             >
               Hap Aplikacionin
             </button>
