@@ -5,11 +5,11 @@ const QRCodeGenerator = () => {
   const [inputValue, setInputValue] = useState('');
   const [ssid, setSsid] = useState('');
   const [password, setPassword] = useState('');
-  const [securityType, setSecurityType] = useState('WPA'); 
+  const [securityType, setSecurityType] = useState('WPA');
   const [qrColor, setQrColor] = useState('#000000');
   const [logo, setLogo] = useState(null);
   const [error, setError] = useState('');
-  const [inputType, setInputType] = useState('URL'); 
+  const [inputType, setInputType] = useState('URL');
 
   const handleInputTypeChange = (e) => {
     setInputType(e.target.value);
@@ -33,14 +33,10 @@ const QRCodeGenerator = () => {
   };
 
   const handleDownload = () => {
-    if (inputType === 'WiFi' && (!ssid || !password)) {
-      setError('Ju lutem, futni SSID dhe fjalëkalimin për WiFi.');
+    const qrCodeValue = getQRCodeValue();
+    if (qrCodeValue === '') {
+      setError('Ju lutem, futni të dhëna të plota për të gjeneruar QR Code.');
       return;
-    } else if (inputType !== 'WiFi' && !inputValue) {
-      setError('Ju lutem, futni një URL, tekst ose numër telefoni për të gjeneruar QR Code!');
-      return;
-    } else {
-      setError('');
     }
 
     const canvas = document.getElementById('qr-code');
@@ -52,11 +48,14 @@ const QRCodeGenerator = () => {
 
   const getQRCodeValue = () => {
     if (inputType === 'WiFi') {
+      if (!ssid || !password) {
+        return ''; // Ensure that QR code is not generated without these fields
+      }
       return `WIFI:S:${ssid};T:${securityType};P:${password};;`;
     } else if (inputType === 'Telefon') {
       return `tel:${inputValue}`;
     }
-    return inputValue;
+    return inputValue; // For URL and Text
   };
 
   return (
@@ -130,7 +129,7 @@ const QRCodeGenerator = () => {
           className="border border-gray-600 rounded-lg p-3 w-full mb-6 text-gray-300 bg-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
 
-        {inputValue && (
+        {getQRCodeValue() && ( // Generate QR code only if value is not empty
           <div className="flex justify-center mb-6">
             <QRCodeCanvas
               id="qr-code"
