@@ -49,14 +49,19 @@ const QRCodeGenerator = () => {
   const getQRCodeValue = () => {
     if (inputType === 'WiFi') {
       if (!ssid || !password) {
-        return ''; // Ensure that QR code is not generated without these fields
+        return ''; // Ensure QR code isn't generated without these fields
       }
       return `WIFI:S:${ssid};T:${securityType};P:${password};;`;
     } else if (inputType === 'Telefon') {
+      if (!inputValue) {
+        return ''; // Return empty if phone number isn't entered
+      }
       return `tel:${inputValue}`;
     }
     return inputValue; // For URL and Text
   };
+
+  const qrCodeValue = getQRCodeValue(); // Get QR code value outside of JSX to avoid re-renders
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-900 p-6">
@@ -129,11 +134,11 @@ const QRCodeGenerator = () => {
           className="border border-gray-600 rounded-lg p-3 w-full mb-6 text-gray-300 bg-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
 
-        {getQRCodeValue() && ( // Generate QR code only if value is not empty
+        {qrCodeValue && ( // Generate QR code only if value is not empty
           <div className="flex justify-center mb-6">
             <QRCodeCanvas
               id="qr-code"
-              value={getQRCodeValue()}
+              value={qrCodeValue}
               size={200}
               bgColor="transparent"
               fgColor={qrColor}
