@@ -12,7 +12,7 @@ const App = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1500); // Zgjatja e ngarkimit për 3 sekonda
+    }, 1500); // Kohëzgjatja e ngarkimit për 1.5 sekonda
 
     return () => clearTimeout(timer);
   }, []);
@@ -29,10 +29,10 @@ const App = () => {
             path="/"
             element={
               <motion.div
-                initial={{ x: '-100%', opacity: 0 }} // Fillon jashtë majtas
-                animate={{ x: 0, opacity: 1 }} // Futet në ekran
-                exit={{ x: '100%', opacity: 0 }} // Del jashtë djathtas
-                transition={{ duration: 0.5, ease: 'easeInOut' }} // Rrisni kohëzgjatjen dhe përdorni easin
+                initial={{ opacity: 0, y: 50 }} // Fillon me opacity 0 dhe lëviz poshtë
+                animate={{ opacity: 1, y: 0 }} // Shfaqet me opacity 1 dhe kthehet në pozita normale
+                exit={{ opacity: 0, y: -50 }} // Del me opacity 0 dhe lëviz lart
+                transition={{ duration: 0.8, ease: 'easeInOut' }} // Zgjat kohëzgjatjen në 0.8 sekonda
                 className="absolute inset-0" // Sigurohuni që e mbulon plotësisht
               >
                 <AppSelector />
@@ -43,10 +43,10 @@ const App = () => {
             path="/qrcode"
             element={
               <motion.div
-                initial={{ x: '-100%', opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                exit={{ x: '100%', opacity: 0 }}
-                transition={{ duration: 0.5, ease: 'easeInOut' }} // Zvogëloni kohëzgjatjen dhe përdorni easin
+                initial={{ opacity: 0, y: 50 }} // Fillon me opacity 0 dhe lëviz poshtë
+                animate={{ opacity: 1, y: 0 }} // Shfaqet me opacity 1 dhe kthehet në pozita normale
+                exit={{ opacity: 0, y: -50 }} // Del me opacity 0 dhe lëviz lart
+                transition={{ duration: 0.8, ease: 'easeInOut' }} // Zgjat kohëzgjatjen në 0.8 sekonda
                 className="absolute inset-0"
               >
                 <QRCodeGenerator />
@@ -57,10 +57,10 @@ const App = () => {
             path="/password"
             element={
               <motion.div
-                initial={{ x: '-100%', opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                exit={{ x: '100%', opacity: 0 }}
-                transition={{ duration: 0.5, ease: 'easeInOut' }} // Zvogëloni kohëzgjatjen dhe përdorni easin
+                initial={{ opacity: 0, y: 50 }} // Fillon me opacity 0 dhe lëviz poshtë
+                animate={{ opacity: 1, y: 0 }} // Shfaqet me opacity 1 dhe kthehet në pozita normale
+                exit={{ opacity: 0, y: -50 }} // Del me opacity 0 dhe lëviz lart
+                transition={{ duration: 0.8, ease: 'easeInOut' }} // Zgjat kohëzgjatjen në 0.8 sekonda
                 className="absolute inset-0"
               >
                 <StrongPasswordGenerator />
