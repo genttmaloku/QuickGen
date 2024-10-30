@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const ColorGenerator = () => {
   const [color1, setColor1] = useState('#ffffff');
@@ -53,6 +53,12 @@ const ColorGenerator = () => {
     const gradient = `linear-gradient(${direction}, ${color1}, ${color2})`;
     return gradient;
   };
+
+  // UseEffect për të përditësuar ngjyrat e butonave
+  useEffect(() => {
+    setGeneratedColor1(color1);
+    setGeneratedColor2(color2);
+  }, [color1, color2]);
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-900 p-6">
@@ -118,8 +124,6 @@ const ColorGenerator = () => {
               setColor1(newColor1);
               setColor2(newColor2);
               setIsSingleColor(false);
-              setGeneratedColor1(newColor1);
-              setGeneratedColor2(newColor2);
             }}
             className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
           >
@@ -132,8 +136,6 @@ const ColorGenerator = () => {
               setColor1(newColor);
               setColor2(newColor);
               setIsSingleColor(true);
-              setGeneratedColor1(newColor);
-              setGeneratedColor2(null);
             }}
             className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
           >
@@ -142,20 +144,30 @@ const ColorGenerator = () => {
         </div>
 
         <h3 className="text-lg font-bold text-white">Ngjyrat e Gjeneruara:</h3>
-        {/* Shfaq ngjyrat e gjeneruara */}
-        {generatedColor1 && (
-          <div className="mt-4 p-4 bg-gray-700 rounded-lg">
-            <p className="text-white">Ngjyra 1: <span style={{ color: generatedColor1 }}>{generatedColor1}</span></p>
-            <p className="text-white">RGB: <span>{hexToRgb(generatedColor1)}</span></p>
-          </div>
-        )}
+{/* Shfaq ngjyrat e gjeneruara */}
+{isSingleColor ? (
+   <div className="mt-4 p-4 bg-gray-700 rounded-lg">
+   <p className="text-white">Ngjyra 1: <span style={{ color: generatedColor1 }}>{generatedColor1}</span></p>
+   <p className="text-white">RGB: <span>{hexToRgb(generatedColor1)}</span></p>
+ </div>
+) : (
+  <>
+    {generatedColor1 && (
+      <div className="mt-4 p-4 bg-gray-700 rounded-lg">
+        <p className="text-white">Ngjyra 1: <span style={{ color: generatedColor1 }}>{generatedColor1}</span></p>
+        <p className="text-white">RGB: <span>{hexToRgb(generatedColor1)}</span></p>
+      </div>
+    )}
 
-        {generatedColor2 && (
-          <div className="mt-4 p-4 bg-gray-700 rounded-lg">
-            <p className="text-white">Ngjyra 2: <span style={{ color: generatedColor2 }}>{generatedColor2}</span></p>
-            <p className="text-white">RGB: <span>{hexToRgb(generatedColor2)}</span></p>
-          </div>
-        )}
+    {generatedColor2 && (
+      <div className="mt-4 p-4 bg-gray-700 rounded-lg">
+        <p className="text-white">Ngjyra 2: <span style={{ color: generatedColor2 }}>{generatedColor2}</span></p>
+        <p className="text-white">RGB: <span>{hexToRgb(generatedColor2)}</span></p>
+      </div>
+    )}
+  </>
+)}
+
 
         <div className="mt-4">
           <button
@@ -178,42 +190,49 @@ const ColorGenerator = () => {
             {copySuccess.rgb1 ? 'Kopjuar!' : ' RGB Ngjyra '}
           </button>
 
-          {generatedColor2 && (
-            <>
-              <button
-                onClick={() => copyToClipboard(color2, 'hex2')}
-                className={`${
-                  copySuccess.hex2 ? 'bg-green-500' : 'bg-green-600 hover:bg-green-700'
-                } text-${isLightColor(color2) ? 'black' : 'white'} font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full mb-4`}
-                style={{ backgroundColor: generatedColor2 || color2 }}
-              >
-                {copySuccess.hex2 ? 'Kopjuar!' : ' HEX Ngjyra 2'}
-              </button>
-
-              <button
-                onClick={() => copyToClipboard(hexToRgb(color2), 'rgb2')}
-                className={`${
-                  copySuccess.rgb2 ? 'bg-green-500' : 'bg-green-600 hover:bg-green-700'
-                } text-${isLightColor(color2) ? 'black' : 'white'} font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full mb-4`}
-                style={{ backgroundColor: generatedColor2 || color2 }}
-              >
-                {copySuccess.rgb2 ? 'Kopjuar!' : ' RGB Ngjyra 2'}
-              </button>
-            </>
+          {!isSingleColor && (
+            <button
+              onClick={() => copyToClipboard(color2, 'hex2')}
+              className={`${
+                copySuccess.hex2 ? 'bg-green-500' : 'bg-green-600 hover:bg-green-700'
+              } text-${isLightColor(color2) ? 'black' : 'white'} font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full mb-4`}
+              style={{ backgroundColor: generatedColor2 || color2 }}
+            >
+              {copySuccess.hex2 ? 'Kopjuar!' : ' HEX Ngjyra 2'}
+            </button>
           )}
 
           {!isSingleColor && (
             <button
-              onClick={() => copyToClipboard(generateGradient(), 'gradient')}
+              onClick={() => copyToClipboard(hexToRgb(color2), 'rgb2')}
               className={`${
-                copySuccess.gradient ? 'bg-green-500' : 'bg-green-600 hover:bg-green-700'
-              } text-${isLightColor(generateGradient()) ? 'black' : 'white'} font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full`}
-              style={{ background: generateGradient() }}
+                copySuccess.rgb2 ? 'bg-green-500' : 'bg-green-600 hover:bg-green-700'
+              } text-${isLightColor(color2) ? 'black' : 'white'} font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full mb-4`}
+              style={{ backgroundColor: generatedColor2 || color2 }}
             >
-              {copySuccess.gradient ? 'Kopjuar!' : ' Kopjo Gradient '}
+              {copySuccess.rgb2 ? 'Kopjuar!' : ' RGB Ngjyra 2'}
             </button>
           )}
+
+          {!isSingleColor && (
+           <button
+           onClick={() => copyToClipboard(generateGradient(), 'gradient')}
+           className={`${
+             copySuccess.gradient ? 'bg-green-500' : 'bg-green-600 hover:bg-green-700'
+           } text-${isLightColor(generateGradient()) ? 'black' : 'white'} font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full`}
+           style={{ background: generateGradient() }} // Shto këtë linjë për të marrë ngjyrën e gradientit
+         >
+           {copySuccess.gradient ? 'Kopjuar!' : ' Kopjo Gradient '}
+         </button>
+         
+          )}
         </div>
+        <button
+          onClick={() => window.history.back()}
+          className="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none mt-4 focus:shadow-outline w-full"
+        >
+          Kthehu në faqën kryesore
+        </button>
       </div>
     </div>
   );
