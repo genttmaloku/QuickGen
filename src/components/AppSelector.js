@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaQrcode, FaLock } from 'react-icons/fa'; // Importimi i ikonave
+import { FaQrcode, FaLock, FaPalette } from 'react-icons/fa'; // Importo ikonën FaLink
 
 const AppSelector = () => {
   const navigate = useNavigate();
@@ -8,7 +8,7 @@ const AppSelector = () => {
   const apps = [
     { name: 'QRCode Generator', url: '/qrcode', icon: <FaQrcode className="text-4xl" /> },
     { name: 'Strong Password Generator', url: '/password', icon: <FaLock className="text-4xl" /> },
-    // Mund të shtoni aplikacione të tjera këtu
+    { name: 'Color Generator', url: '/colorgenerator',     icon: <FaPalette className="text-4xl"/> },
   ];
 
   const openApp = (url) => {
