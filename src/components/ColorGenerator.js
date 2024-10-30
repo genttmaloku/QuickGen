@@ -187,6 +187,12 @@ const ColorGenerator = () => {
             </>
           )}
         </div>
+        <button
+          onClick={() => window.history.back()}
+          className="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+        >
+          Kthehu në faqën kryesore
+        </button>
       </div>
     </div>
   );
