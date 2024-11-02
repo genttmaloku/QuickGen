@@ -9,6 +9,7 @@ import ColorGenerator from './components/ColorGenerator';
 import GenerateLoremIpsum from './components/GenerateLoremIpsum';
 import UrlShortener from './components/UrlShortener';
 
+
 const routes = [
   { path: '/', element: <AppSelector /> },
   { path: '/qrcode', element: <QRCodeGenerator /> },
@@ -54,6 +55,7 @@ const App = () => {
               }
             />
           ))}
+        
         </Routes>
       </div>
     </Router>
