@@ -8,7 +8,15 @@ import Preloader from './components/Preloader';
 import ColorGenerator from './components/ColorGenerator';
 import GenerateLoremIpsum from './components/GenerateLoremIpsum';
 import UrlShortener from './components/UrlShortener';
-import ImageConverter from './components/ImageConverter';
+
+const routes = [
+  { path: '/', element: <AppSelector /> },
+  { path: '/qrcode', element: <QRCodeGenerator /> },
+  { path: '/password', element: <StrongPasswordGenerator /> },
+  { path: '/colorgenerator', element: <ColorGenerator /> },
+  { path: '/loremipsumgenerator', element: <GenerateLoremIpsum /> },
+  { path: '/urlshortener', element: <UrlShortener /> },
+];
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -16,7 +24,7 @@ const App = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1500); // Kohëzgjatja e ngarkimit për 1.5 sekonda
+    }, 1500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -29,90 +37,23 @@ const App = () => {
     <Router>
       <div className="flex flex-col min-h-screen bg-gray-900">
         <Routes>
-          <Route
-            path="/"
-            element={
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -50 }}
-                transition={{ duration: 0.8, ease: 'easeInOut' }}
-                className="absolute inset-0"
-              >
-                <AppSelector />
-              </motion.div>
-            }
-          />
-          <Route
-            path="/qrcode"
-            element={
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -50 }}
-                transition={{ duration: 0.8, ease: 'easeInOut' }}
-                className="absolute inset-0"
-              >
-                <QRCodeGenerator />
-              </motion.div>
-            }
-          />
-          <Route
-            path="/password"
-            element={
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -50 }}
-                transition={{ duration: 0.8, ease: 'easeInOut' }}
-                className="absolute inset-0"
-              >
-                <StrongPasswordGenerator />
-              </motion.div>
-            }
-          />
-          <Route
-            path="/colorgenerator"
-            element={
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -50 }}
-                transition={{ duration: 0.8, ease: 'easeInOut' }}
-                className="absolute inset-0"
-              >
-                <ColorGenerator />
-              </motion.div>
-            }
-          />
-             <Route
-            path="/loremipsumgenerator"
-            element={
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -50 }}
-                transition={{ duration: 0.8, ease: 'easeInOut' }}
-                className="absolute inset-0"
-              >
-                <GenerateLoremIpsum />
-              </motion.div>
-            }
-          />
-           <Route
-            path="/urlshortener"
-            element={
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -50 }}
-                transition={{ duration: 0.8, ease: 'easeInOut' }}
-                className="absolute inset-0"
-              >
-                <UrlShortener />
-              </motion.div>
-            }
-          />
+          {routes.map(({ path, element }) => (
+            <Route
+              key={path}
+              path={path}
+              element={
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -50 }}
+                  transition={{ duration: 0.8, ease: 'easeInOut' }}
+                  className="absolute inset-0"
+                >
+                  {element}
+                </motion.div>
+              }
+            />
+          ))}
         </Routes>
       </div>
     </Router>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaQrcode, FaLock, FaPalette, FaParagraph, FaLink,    } from 'react-icons/fa'; // Importo ikonën FaLink
+import { FaQrcode, FaLock, FaPalette, FaParagraph, FaLink, FaImage    } from 'react-icons/fa'; // Importo ikonën FaLink
 
 const AppSelector = () => {
   const navigate = useNavigate();
