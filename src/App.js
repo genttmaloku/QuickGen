@@ -6,6 +6,9 @@ import QRCodeGenerator from './components/QRCodeGenerator';
 import StrongPasswordGenerator from './components/StrongPasswordGenerator';
 import Preloader from './components/Preloader';
 import ColorGenerator from './components/ColorGenerator';
+import GenerateLoremIpsum from './components/GenerateLoremIpsum';
+import UrlShortener from './components/UrlShortener';
+import ImageConverter from './components/ImageConverter';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -82,7 +85,34 @@ const App = () => {
               </motion.div>
             }
           />
-         
+             <Route
+            path="/loremipsumgenerator"
+            element={
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -50 }}
+                transition={{ duration: 0.8, ease: 'easeInOut' }}
+                className="absolute inset-0"
+              >
+                <GenerateLoremIpsum />
+              </motion.div>
+            }
+          />
+           <Route
+            path="/urlshortener"
+            element={
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -50 }}
+                transition={{ duration: 0.8, ease: 'easeInOut' }}
+                className="absolute inset-0"
+              >
+                <UrlShortener />
+              </motion.div>
+            }
+          />
         </Routes>
       </div>
     </Router>

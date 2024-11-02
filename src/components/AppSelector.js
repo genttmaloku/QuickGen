@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaQrcode, FaLock, FaPalette } from 'react-icons/fa'; // Importo ikonën FaLink
+import { FaQrcode, FaLock, FaPalette, FaParagraph, FaLink,    } from 'react-icons/fa'; // Importo ikonën FaLink
 
 const AppSelector = () => {
   const navigate = useNavigate();
@@ -9,6 +9,9 @@ const AppSelector = () => {
     { name: 'QRCode Generator', url: '/qrcode', icon: <FaQrcode className="text-4xl" /> },
     { name: 'Strong Password Generator', url: '/password', icon: <FaLock className="text-4xl" /> },
     { name: 'Color Generator', url: '/colorgenerator',     icon: <FaPalette className="text-4xl"/> },
+    { name: 'Lorem Ipsum Generator', url: '/loremipsumgenerator',     icon: <FaParagraph FileAlt  className="text-4xl"/> },
+    { name: 'URL Shortener', url: '/urlshortener',     icon: <FaLink  FileAlt  className="text-4xl"/> },
+
   ];
 
   const openApp = (url) => {
