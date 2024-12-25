@@ -8,6 +8,7 @@ import Preloader from './components/Preloader';
 import ColorGenerator from './components/ColorGenerator';
 import GenerateLoremIpsum from './components/GenerateLoremIpsum';
 import UrlShortener from './components/UrlShortener';
+import BarcodeGenerator from './components/BarcodeGenerator';
 
 
 const routes = [
@@ -17,6 +18,7 @@ const routes = [
   { path: '/colorgenerator', element: <ColorGenerator /> },
   { path: '/loremipsumgenerator', element: <GenerateLoremIpsum /> },
   { path: '/urlshortener', element: <UrlShortener /> },
+  { path: '/barcode', element: <BarcodeGenerator /> },
 ];
 
 const App = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaQrcode, FaLock, FaPalette, FaParagraph, FaLink, FaImage    } from 'react-icons/fa'; // Importo ikonën FaLink
+import { FaQrcode, FaLock, FaPalette, FaParagraph, FaLink, FaImage, FaBarcode    } from 'react-icons/fa'; // Importo ikonën FaLink
 
 const AppSelector = () => {
   const navigate = useNavigate();
@@ -11,6 +11,8 @@ const AppSelector = () => {
     { name: 'Color Generator', url: '/colorgenerator',     icon: <FaPalette className="text-4xl"/> },
     { name: 'Lorem Ipsum Generator', url: '/loremipsumgenerator',     icon: <FaParagraph FileAlt  className="text-4xl"/> },
     { name: 'URL Shortener', url: '/urlshortener',     icon: <FaLink  FileAlt  className="text-4xl"/> },
+    { name: 'BarcodeGenerator', url: '/barcode',     icon: <FaBarcode  FileAlt  className="text-4xl"/> },
+
 
   ];
 
