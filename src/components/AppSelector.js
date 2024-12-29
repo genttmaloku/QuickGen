@@ -11,7 +11,14 @@ const AppSelector = () => {
     { name: 'Color Generator', url: '/colorgenerator', icon: <FaPalette className="text-4xl" /> },
     { name: 'Lorem Ipsum Generator', url: '/loremipsumgenerator', icon: <FaParagraph className="text-4xl" /> },
     { name: 'URL Shortener', url: '/urlshortener', icon: <FaLink className="text-4xl" /> },
-   // { name: 'Barcode Generator', url: '/barcode', icon: <FaBarcode className="text-4xl" /> },
+  ];
+
+  const messages = [
+    "Provoni gjeneruesin tonë të QR kodeve!",
+    "Krijoni fjalëkalime të forta për siguri maksimale.",
+    "Gjeneroni ngjyra të bukura me Color Generator!",
+    "Shkurtues URL falas dhe i shpejtë - provo tani!",
+    "Gjeneroni Lorem Ipsum për projektet tuaja të dizajnit.",
   ];
 
   const openApp = (url) => {
@@ -20,6 +27,21 @@ const AppSelector = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-900">
+      {/* Shiriti me reklama */}
+      <div className="relative overflow-hidden bg-gray-800 py-2">
+        <div className="whitespace-nowrap animate-marquee text-white font-bold text-lg">
+          {messages.map((message, index) => (
+            <span
+              key={index}
+              className="inline-block px-8"
+            >
+              {message}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Faqja kryesore */}
       <div className="flex-grow flex flex-col items-center justify-center p-6">
         <h1 className="text-4xl font-extrabold text-center text-white mb-8 animate__animated animate__fadeInUp">
           Mirësevini në QuickGen!
@@ -30,7 +52,7 @@ const AppSelector = () => {
               key={index}
               className="bg-gray-800 shadow-xl rounded-lg p-6 text-center transition-all transform hover:scale-110 hover:shadow-2xl hover:ring-2 hover:ring-opacity-50"
             >
-              <div className="mb-4 flex justify-center ">
+              <div className="mb-4 flex justify-center">
                 {app.icon}
               </div>
               <h2 className="text-2xl font-bold text-white mb-4">{app.name}</h2>
