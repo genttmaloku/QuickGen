@@ -9,6 +9,7 @@ import ColorGenerator from './components/ColorGenerator';
 import GenerateLoremIpsum from './components/GenerateLoremIpsum';
 import UrlShortener from './components/UrlShortener';
 import BarcodeGenerator from './components/BarcodeGenerator';
+import LetterCounter from './components/LetterCounter';
 
 
 const routes = [
@@ -18,7 +19,8 @@ const routes = [
   { path: '/colorgenerator', element: <ColorGenerator /> },
   { path: '/loremipsumgenerator', element: <GenerateLoremIpsum /> },
   { path: '/urlshortener', element: <UrlShortener /> },
-  { path: '/barcode', element: <BarcodeGenerator /> },
+  //{ path: '/barcode', element: <BarcodeGenerator /> },
+  //{ path: '/lettercounter', element: <LetterCounter /> },
 ];
 
 const App = () => {

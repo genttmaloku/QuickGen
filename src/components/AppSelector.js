@@ -1,49 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaQrcode, FaLock, FaPalette, FaParagraph, FaLink, FaBarcode, FaGlobe, FaInstagram, FaEnvelope, FaLinkedin } from 'react-icons/fa';
+import { FaQrcode, FaLock, FaPalette, FaParagraph, FaLink, FaGlobe, FaInstagram, FaEnvelope, FaLinkedin, FaKeyboard, FaBarcode  } from 'react-icons/fa';
 
 const AppSelector = () => {
   const navigate = useNavigate();
-
+  
   const apps = [
     { name: 'QRCode Generator', url: '/qrcode', icon: <FaQrcode className="text-4xl" /> },
     { name: 'Strong Password Generator', url: '/password', icon: <FaLock className="text-4xl" /> },
     { name: 'Color Generator', url: '/colorgenerator', icon: <FaPalette className="text-4xl" /> },
     { name: 'Lorem Ipsum Generator', url: '/loremipsumgenerator', icon: <FaParagraph className="text-4xl" /> },
     { name: 'URL Shortener', url: '/urlshortener', icon: <FaLink className="text-4xl" /> },
+    //{ name: 'Barcode Generatore', url: '/barcode', icon: <FaBarcode className="text-4xl" /> },
+    //{ name: 'Letter Counter', url: '/lettercounter', icon: <FaKeyboard  className="text-4xl" /> },
   ];
 
-  const messages = [
-    "Provoni gjeneruesin tonë të QR kodeve!",
-    "Krijoni fjalëkalime të forta për siguri maksimale.",
-    "Gjeneroni ngjyra të bukura me Color Generator!",
-    "Shkurtues URL falas dhe i shpejtë - provo tani!",
-    "Gjeneroni Lorem Ipsum për projektet tuaja të dizajnit.",
-  ];
+ 
 
   const openApp = (url) => {
     navigate(url);
   };
 
+ 
+
+
   return (
     <div className="flex flex-col min-h-screen bg-gray-900">
-      {/* Shiriti me reklama */}
-      <div className="relative overflow-hidden bg-gray-800 py-2">
-        <div className="whitespace-nowrap animate-marquee text-white font-bold text-lg">
-          {messages.map((message, index) => (
-            <span
-              key={index}
-              className="inline-block px-8"
-            >
-              {message}
-            </span>
-          ))}
-        </div>
-      </div>
+      
 
       {/* Faqja kryesore */}
       <div className="flex-grow flex flex-col items-center justify-center p-6">
-        <h1 className="text-4xl font-extrabold text-center text-white mb-8 animate__animated animate__fadeInUp">
+        <h1 className="text-4xl font-extrabold text-center text-white mb-8">
           Mirësevini në QuickGen!
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
