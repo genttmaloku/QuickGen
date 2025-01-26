@@ -31,14 +31,14 @@ const CookieConsent = () => {
   return (
     <div className="fixed bottom-5 left-5 right-5 bg-gray-900 text-white p-4 rounded-lg shadow-lg flex flex-col sm:flex-row sm:justify-between sm:items-center z-50 border border-gray-700">
       <p className="text-sm mb-3 sm:mb-0">
-        We use cookies to enhance your experience. By continuing to browse, you agree to our{" "}
+      Ne përdorim cookies për të përmirësuar përvojën tuaj. Duke vazhduar shfletimin, ju pranoni politikën tonë.{" "}
         <a
           href="/politika-e-privatesise"
           className="text-blue-400 underline hover:text-blue-300"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Privacy Policy
+         Politika e Privatësisë
         </a>.
       </p>
       <div className="flex flex-col sm:flex-row sm:space-x-3 w-full sm:w-auto">
@@ -46,13 +46,13 @@ const CookieConsent = () => {
           onClick={handleAccept}
           className="bg-green-500 text-white py-2 px-4 rounded mb-2 sm:mb-0 hover:bg-green-600 transition-all w-full sm:w-auto"
         >
-          Accept
+          Prano 
         </button>
         <button
           onClick={handleDecline}
           className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition-all w-full sm:w-auto"
         >
-          Decline
+         Refuzo
         </button>
       </div>
     </div>
