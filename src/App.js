@@ -12,6 +12,7 @@ import BarcodeGenerator from "./components/BarcodeGenerator";
 import LetterCounter from "./components/LetterCounter";
 import CookieConsent from "./components/CookieConsent"; // Importo komponentin
 import PrivacyPolicy from "./components/PrivacyPolicy";
+import AboutUs from "./components/AboutUs";
 
 const routes = [
   { path: "/", element: <AppSelector /> },
@@ -20,7 +21,8 @@ const routes = [
   { path: "/colorgenerator", element: <ColorGenerator /> },
   { path: "/loremipsumgenerator", element: <GenerateLoremIpsum /> },
   { path: "/urlshortener", element: <UrlShortener /> },
-  { path: "/politika-e-privatesise", element: <PrivacyPolicy/>}
+  { path: "/politika-e-privatesise", element: <PrivacyPolicy/>},
+  { path: "/rreth-nesh", element: <AboutUs/> }
   // { path: "/barcode", element: <BarcodeGenerator /> },
   // { path: "/lettercounter", element: <LetterCounter /> },
 ];
