@@ -22,9 +22,9 @@ const routes = [
   { path: "/loremipsumgenerator", element: <GenerateLoremIpsum /> },
   { path: "/urlshortener", element: <UrlShortener /> },
   { path: "/politika-e-privatesise", element: <PrivacyPolicy/>},
-  { path: "/rreth-nesh", element: <AboutUs/> }
-  // { path: "/barcode", element: <BarcodeGenerator /> },
-  // { path: "/lettercounter", element: <LetterCounter /> },
+  { path: "/rreth-nesh", element: <AboutUs/> },
+  { path: "/gjenero-barcode", element: <BarcodeGenerator /> },
+  { path: "/numro-karaktere", element: <LetterCounter /> },
 ];
 
 const App = () => {
