@@ -38,8 +38,9 @@ const LetterCounter = () => {
   };
 
   const countPunctuation = (str) => {
-    return str.replace(/[^\.,!?;:(){}[\]"'`-]/g, '').length;
+    return str.replace(/[^\.,!?;:(){}[\]"'`\/\\-]/g, '').length;
   };
+  
 
   const countSpaces = (str) => {
     return (str.match(/\s/g) || []).length; // Regjistron hapësirat (faktor përhapës është \s)
