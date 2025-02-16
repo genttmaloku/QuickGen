@@ -10,9 +10,10 @@ import GenerateLoremIpsum from "./components/GenerateLoremIpsum";
 import UrlShortener from "./components/UrlShortener";
 import BarcodeGenerator from "./components/BarcodeGenerator";
 import LetterCounter from "./components/LetterCounter";
-import CookieConsent from "./components/CookieConsent"; // Importo komponentin
+import CookieConsent from "./components/CookieConsent"; 
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import AboutUs from "./components/AboutUs";
+
 
 const routes = [
   { path: "/", element: <AppSelector /> },
@@ -25,6 +26,7 @@ const routes = [
   { path: "/rreth-nesh", element: <AboutUs/> },
   { path: "/gjenero-barcode", element: <BarcodeGenerator /> },
   { path: "/numro-karaktere", element: <LetterCounter /> },
+
 ];
 
 const App = () => {

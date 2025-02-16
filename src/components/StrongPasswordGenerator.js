@@ -50,7 +50,7 @@ const StrongPasswordGenerator = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 p-6">
       <div className="bg-gray-800 shadow-2xl rounded-lg p-8 max-w-lg w-full border border-gray-700">
-        <h2 className="text-4xl font-extrabold text-center text-white mb-6">Strong Password Generator</h2>
+        <h2 className="text-4xl font-extrabold text-center text-white mb-6">Gjenerues Fjalëkalimesh</h2>
         
         <label className="text-white mb-2">Zgjidh gjatësi të fjalëkalimit:</label>
         <input

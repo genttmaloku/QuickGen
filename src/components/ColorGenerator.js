@@ -63,7 +63,7 @@ const ColorGenerator = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-900 p-6">
       <div className="bg-gray-800 shadow-2xl rounded-lg p-8 max-w-lg w-full border border-gray-700">
-        <h2 className="text-4xl font-extrabold text-center text-white mb-6">Ngjyrat për një Klik</h2>
+        <h2 className="text-4xl font-extrabold text-center text-white mb-6">Gjenerues Ngjyrash</h2>
 
         <div
           style={{ background: isSingleColor ? color1 : generateGradient() }}

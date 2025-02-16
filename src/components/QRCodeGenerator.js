@@ -66,7 +66,7 @@ const QRCodeGenerator = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-900 p-6">
       <div className="bg-gray-800 shadow-2xl rounded-lg p-8 max-w-lg w-full border border-gray-700">
-        <h2 className="text-4xl font-extrabold text-center text-white mb-6">Krijo QR Code</h2>
+        <h2 className="text-4xl font-extrabold text-center text-white mb-6">Gjenerues QR Code</h2>
         
         <label className="text-white mb-2 block">Zgjidh llojin e përmbajtjes:</label>
         <select
