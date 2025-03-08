@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaQrcode, FaLock, FaPalette, FaParagraph, FaLink, FaGlobe, FaInstagram, FaEnvelope, FaLinkedin, FaBarcode  } from 'react-icons/fa';
+import { FaQrcode, FaLock, FaPalette, FaParagraph, FaLink, FaGlobe, FaInstagram, FaEnvelope, FaLinkedin, FaBarcode, FaHeading, FaBirthdayCake } from 'react-icons/fa';
 import { AiOutlineFileText } from 'react-icons/ai';
 
 const AppSelector = () => {
@@ -14,8 +14,10 @@ const AppSelector = () => {
     { name: 'Color Generator', url: '/colorgenerator', icon: <FaPalette className="text-4xl text-yellow-400" /> },
     { name: 'Lorem Ipsum Generator', url: '/loremipsumgenerator', icon: <FaParagraph className="text-4xl text-purple-400" /> },
     { name: 'URL Shortener', url: '/urlshortener', icon: <FaLink className="text-4xl text-red-400" /> },
-    { name: 'Letter Counter', url: '/numro-karaktere', icon: <AiOutlineFileText className="text-4xl text-purple-700" />, status: 'new' },
-    { name: 'Barcode Generator', url: '/gjenero-barcode', icon: <FaBarcode className="text-4xl text-red-900" />, status: 'new' }
+    { name: 'Letter Counter', url: '/numro-karaktere', icon: <AiOutlineFileText className="text-4xl text-purple-700" /> },
+    { name: 'Barcode Generator', url: '/gjenero-barcode', icon: <FaBarcode className="text-4xl text-red-900" /> },
+    { name: 'Tekst Konvertues', url: '/tekst-konvertues', icon: <FaHeading className="text-4xl text-teal-800" />, status: 'new' },
+    { name: 'Kalkulatori i Ditëlindjes', url: '/ditelindja', icon: <FaBirthdayCake className="text-4xl text-teal-300" />, status: 'new' },
   ];
 
   const openApp = (url) => {
@@ -33,16 +35,16 @@ const AppSelector = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-900">
+    <div className="flex flex-col min-h-screen bg-gradient-to-br from-gray-900 to-gray-800">
       <div className="flex-grow flex flex-col items-center justify-center p-6">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-center text-white mb-10 animate-fade-in">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-teal-400 mb-10 animate-fade-in">
           Mirësevini në QuickGen!
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {apps.map((app, index) => (
             <div
               key={index}
-              className="relative bg-gray-800 shadow-2xl rounded-xl p-8 text-center transition-all transform hover:scale-105 hover:shadow-xl hover:ring-2 hover:ring-opacity-50"
+              className="relative bg-gray-800 shadow-2xl rounded-xl p-8 text-center transition-all transform hover:scale-105 hover:shadow-xl hover:ring-2 hover:ring-opacity-50 hover:ring-blue-500"
             >
               <div className="flex justify-center mb-4 animate-bounce-slow">
                 {app.icon}
@@ -53,7 +55,7 @@ const AppSelector = () => {
                   onClick={app.status === 'updated' ? () => openModal(app.updateInfo) : undefined}
                 >
                   <span
-                    className={`text-white text-xs px-4 py-2 rounded-xl ${app.status === 'new' ? 'bg-green-500 shadow-lg  ' : 'bg-blue-500 shadow-md cursor-pointer'}`}
+                    className={`text-white text-xs px-4 py-2 rounded-xl ${app.status === 'new' ? 'bg-gradient-to-r from-green-500 to-green-600 shadow-lg' : 'bg-gradient-to-r from-blue-500 to-blue-600 shadow-md cursor-pointer'}`}
                   >
                     {app.status === 'new' ? 'I Ri' : 'I Përditësuar'}
                   </span>
@@ -62,7 +64,7 @@ const AppSelector = () => {
               <h2 className="text-xl sm:text-2xl font-semibold text-white mb-4">{app.name}</h2>
               <button
                 onClick={() => openApp(app.url)}
-                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl focus:outline-none focus:ring focus:ring-blue-400 transition-all duration-300"
+                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-3 px-6 rounded-xl focus:outline-none focus:ring focus:ring-blue-400 transition-all duration-300"
               >
                 Hap Aplikacionin
               </button>
@@ -74,12 +76,12 @@ const AppSelector = () => {
       {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 px-4 py-6">
-          <div className="bg-white p-8 rounded-lg max-w-md w-full sm:max-w-lg transform transition-all duration-500 scale-100 opacity-100 animate-modal">
-            <h2 className="text-2xl font-semibold mb-4">Informacioni i Përditësimit</h2>
-            <p className="text-lg mb-4">{modalContent}</p>
+          <div className="bg-gray-900 p-8 rounded-lg max-w-md w-full sm:max-w-lg transform transition-all duration-500 scale-100 opacity-100 animate-modal">
+            <h2 className="text-2xl font-semibold mb-4 text-white">Informacioni i Përditësimit</h2>
+            <p className="text-lg mb-4 text-gray-300">{modalContent}</p>
             <button
               onClick={closeModal}
-              className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:ring focus:ring-red-400 transition-all duration-300"
+              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:ring focus:ring-red-400 transition-all duration-300"
             >
               Mbyll
             </button>

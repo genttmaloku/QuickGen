@@ -13,6 +13,8 @@ import LetterCounter from "./components/LetterCounter";
 import CookieConsent from "./components/CookieConsent"; 
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import AboutUs from "./components/AboutUs";
+import TextConverter from "./components/TextConverter";
+import BirthdayTimeCalculator from "./components/BirthdayTimeCalculator";
 
 
 const routes = [
@@ -26,6 +28,8 @@ const routes = [
   { path: "/rreth-nesh", element: <AboutUs/> },
   { path: "/gjenero-barcode", element: <BarcodeGenerator /> },
   { path: "/numro-karaktere", element: <LetterCounter /> },
+  { path: "/tekst-konvertues" ,  element: <TextConverter/>},
+  { path: "/ditelindja" , element:<BirthdayTimeCalculator/>}
 
 ];
 
