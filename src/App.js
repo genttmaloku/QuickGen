@@ -19,17 +19,17 @@ import BirthdayTimeCalculator from "./components/BirthdayTimeCalculator";
 
 const routes = [
   { path: "/", element: <AppSelector /> },
-  { path: "/qrcode", element: <QRCodeGenerator /> },
-  { path: "/password", element: <StrongPasswordGenerator /> },
-  { path: "/colorgenerator", element: <ColorGenerator /> },
-  { path: "/loremipsumgenerator", element: <GenerateLoremIpsum /> },
-  { path: "/urlshortener", element: <UrlShortener /> },
+  { path: "/qr-code", element: <QRCodeGenerator /> },
+  { path: "/gjenero-password", element: <StrongPasswordGenerator /> },
+  { path: "/gjenero-ngjyra", element: <ColorGenerator /> },
+  { path: "/gjenero-lorem-ipsum", element: <GenerateLoremIpsum /> },
+  { path: "/gjenero-url-te-shkurt", element: <UrlShortener /> },
   { path: "/politika-e-privatesise", element: <PrivacyPolicy/>},
   { path: "/rreth-nesh", element: <AboutUs/> },
   { path: "/gjenero-barcode", element: <BarcodeGenerator /> },
   { path: "/numro-karaktere", element: <LetterCounter /> },
   { path: "/tekst-konvertues" ,  element: <TextConverter/>},
-  { path: "/ditelindja" , element:<BirthdayTimeCalculator/>}
+  { path: "/llogarit-ditelindjen" , element:<BirthdayTimeCalculator/>}
 
 ];
 
