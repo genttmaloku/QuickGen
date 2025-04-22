@@ -138,13 +138,13 @@ const AppSelector = () => {
           </a>
         </div>
         <div className='text-gray-300 text-center py-4 pb-0'>
-            <a href="#rreth-nesh" className="hover:text-blue-400 transition duration-300">
+            <button onClick={() => navigate('/rreth-nesh')} className="hover:text-blue-400 transition duration-300">
               Rreth Nesh
-            </a> 
+            </button> 
             {" / "}
-            <a href="#kushtet-e-perdorimit" className="hover:text-blue-400 transition duration-300">
-              Kushtet e Perdorimit
-            </a>
+            <button onClick={() => navigate('/politika-e-privatesise')} className="hover:text-blue-400 transition duration-300">
+              Politika e Privatësisë
+            </button>
         </div>
 
       </footer>
